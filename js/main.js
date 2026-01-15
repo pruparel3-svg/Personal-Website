@@ -8,6 +8,32 @@ if (bannerImage) {
 }
 
 // ===================================
+// Interactive Journey Navigation
+// ===================================
+document.addEventListener('DOMContentLoaded', () => {
+    const journeyPoints = document.querySelectorAll('.journey-point');
+    const journeyPanels = document.querySelectorAll('.journey-panel');
+
+    journeyPoints.forEach(point => {
+        point.addEventListener('click', () => {
+            const journeyId = point.getAttribute('data-journey');
+
+            // Update active states on buttons
+            journeyPoints.forEach(p => p.classList.remove('active'));
+            point.classList.add('active');
+
+            // Update active panel
+            journeyPanels.forEach(panel => {
+                panel.classList.remove('active');
+                if (panel.getAttribute('data-panel') === journeyId) {
+                    panel.classList.add('active');
+                }
+            });
+        });
+    });
+});
+
+// ===================================
 // Smooth Scroll Navigation
 // ===================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

@@ -1,4 +1,13 @@
 // ===================================
+// Banner Image Protection
+// ===================================
+const bannerImage = document.querySelector('.banner-image');
+if (bannerImage) {
+    bannerImage.addEventListener('contextmenu', (e) => e.preventDefault());
+    bannerImage.addEventListener('dragstart', (e) => e.preventDefault());
+}
+
+// ===================================
 // Smooth Scroll Navigation
 // ===================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

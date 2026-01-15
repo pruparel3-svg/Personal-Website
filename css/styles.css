@@ -589,31 +589,16 @@ a:hover {
     margin: var(--spacing-lg) 0;
 }
 
-/* SVG Road */
-.journey-road {
+/* Road Image */
+.road-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    object-fit: contain;
+    object-position: center;
     z-index: 1;
-    overflow: visible;
-}
-
-.road-surface {
-    fill: none !important;
-    stroke: #3d3a36;
-    stroke-width: 35;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.road-dashes {
-    fill: none !important;
-    stroke: #ffffff;
-    stroke-width: 2;
-    stroke-dasharray: 15 12;
-    stroke-linecap: round;
 }
 
 /* Milestone Markers */

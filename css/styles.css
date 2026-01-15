@@ -159,6 +159,12 @@ a:hover {
     color: var(--color-text-secondary);
 }
 
+.section-intro .emphasis {
+    color: var(--color-primary);
+    font-style: italic;
+    font-weight: 500;
+}
+
 /* ===================================
    Navigation
    =================================== */

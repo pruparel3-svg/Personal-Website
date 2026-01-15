@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nBuild modern personal website with minimalist design\n\n- Add complete HTML structure with hero, about, experience, education, skills, volunteer, services, and contact sections\n- Implement responsive CSS with mobile-first approach and smooth animations\n- Add interactive JavaScript for navigation, form validation, and scroll effects\n- Include professional content from LinkedIn profile\n- Set up contact form ready for Web3Forms/Formspree integration\n- Update README with comprehensive documentation and setup instructions\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git mv:*)",
+      "Bash(git commit:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git stash pop:*)",
+      "Bash(gh api:*)"
     ]
   }
 }

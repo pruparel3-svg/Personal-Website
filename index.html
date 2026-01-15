@@ -103,114 +103,155 @@
         </div>
     </section>
 
-    <!-- Experience Section - Interactive Journey -->
+    <!-- Experience Section - Interactive Journey Map -->
     <section id="experience" class="section experience">
         <div class="container">
             <h2 class="section-title fade-in">My Journey</h2>
-            <p class="section-intro fade-in">15+ years transforming businesses across sectors</p>
+            <p class="section-intro fade-in">Click each milestone to explore my career path</p>
 
-            <!-- Journey Navigation -->
-            <div class="journey-nav fade-in">
-                <button class="journey-point active" data-journey="1">
-                    <span class="journey-icon"><i class="fas fa-heartbeat"></i></span>
-                    <span class="journey-label">Healthcare R&D</span>
-                    <span class="journey-years">Early Career</span>
-                </button>
-                <div class="journey-connector"></div>
-                <button class="journey-point" data-journey="2">
-                    <span class="journey-icon"><i class="fas fa-boxes"></i></span>
-                    <span class="journey-label">E-Commerce</span>
-                    <span class="journey-years">2014 - 2019</span>
-                </button>
-                <div class="journey-connector"></div>
-                <button class="journey-point" data-journey="3">
-                    <span class="journey-icon"><i class="fas fa-pills"></i></span>
-                    <span class="journey-label">Digital Pharmacy</span>
-                    <span class="journey-years">2019 - 2023</span>
-                </button>
-                <div class="journey-connector"></div>
-                <button class="journey-point" data-journey="4">
-                    <span class="journey-icon"><i class="fas fa-laptop-medical"></i></span>
-                    <span class="journey-label">Healthcare Tech</span>
-                    <span class="journey-years">2023 - Present</span>
-                </button>
+            <!-- Interactive Journey Map -->
+            <div class="journey-map fade-in">
+                <!-- SVG Path connecting the milestones -->
+                <svg class="journey-path" viewBox="0 0 1000 400" preserveAspectRatio="none">
+                    <path class="path-bg" d="M50,200 Q200,50 350,200 Q500,350 650,200 Q800,50 950,200" />
+                    <path class="path-progress" d="M50,200 Q200,50 350,200 Q500,350 650,200 Q800,50 950,200" />
+                </svg>
+
+                <!-- Journey Milestones -->
+                <div class="milestone" data-milestone="1" style="left: 5%; top: 45%;">
+                    <div class="milestone-marker">
+                        <div class="marker-pulse"></div>
+                        <div class="marker-icon"><i class="fas fa-heartbeat"></i></div>
+                    </div>
+                    <div class="milestone-card">
+                        <div class="card-header">
+                            <span class="card-years">Foundation</span>
+                            <h3>Healthcare R&D</h3>
+                        </div>
+                        <div class="card-preview">
+                            <p>R&D Engineer</p>
+                        </div>
+                        <div class="card-details">
+                            <p class="card-company">Rancho Los Amigos Spinal Rehabilitation Center</p>
+                            <p class="card-description">Built foundation in healthcare innovation, developing medical devices and rehabilitation technology with direct patient impact.</p>
+                            <div class="card-tags">
+                                <span>Medical Devices</span>
+                                <span>Patient Care</span>
+                                <span>Research</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="2" style="left: 30%; top: 10%;">
+                    <div class="milestone-marker">
+                        <div class="marker-pulse"></div>
+                        <div class="marker-icon"><i class="fas fa-boxes"></i></div>
+                    </div>
+                    <div class="milestone-card">
+                        <div class="card-header">
+                            <span class="card-years">2014 - 2019</span>
+                            <h3>E-Commerce</h3>
+                        </div>
+                        <div class="card-preview">
+                            <p>Operations → Program Management</p>
+                        </div>
+                        <div class="card-details">
+                            <p class="card-company">Amazon.com | Bay Area & Seattle</p>
+                            <p class="card-description">Rapid promotion to Senior Manager. Led global programs across NA, EU, India driving $485M savings through automation.</p>
+                            <div class="card-tags">
+                                <span>$485M Savings</span>
+                                <span>Global Programs</span>
+                                <span>34 FCs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-milestone="3" style="left: 55%; top: 70%;">
+                    <div class="milestone-marker">
+                        <div class="marker-pulse"></div>
+                        <div class="marker-icon"><i class="fas fa-pills"></i></div>
+                    </div>
+                    <div class="milestone-card">
+                        <div class="card-header">
+                            <span class="card-years">2019 - 2023</span>
+                            <h3>Digital Pharmacy</h3>
+                        </div>
+                        <div class="card-preview">
+                            <p>Director → Chief of Staff to VP</p>
+                        </div>
+                        <div class="card-details">
+                            <p class="card-company">Amazon Pharmacy | Phoenix & Seattle</p>
+                            <p class="card-description">Pioneered pharmacy operations across 13 markets. $238M CapEx avoided. 1-day Rx delivery to 60% of Prime customers.</p>
+                            <div class="card-tags">
+                                <span>$238M Avoided</span>
+                                <span>13 Markets</span>
+                                <span>45% Faster</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone active" data-milestone="4" style="left: 80%; top: 15%;">
+                    <div class="milestone-marker">
+                        <div class="marker-pulse"></div>
+                        <div class="marker-icon"><i class="fas fa-laptop-medical"></i></div>
+                        <span class="current-badge">Now</span>
+                    </div>
+                    <div class="milestone-card">
+                        <div class="card-header">
+                            <span class="card-years">2023 - Present</span>
+                            <h3>Healthcare Tech</h3>
+                        </div>
+                        <div class="card-preview">
+                            <p>Sr. Director, Product & BizOps</p>
+                        </div>
+                        <div class="card-details">
+                            <p class="card-company">Alto Pharmacy | Seattle</p>
+                            <p class="card-description">Leading $2.5B pharmacy platform. P&L ownership for $250M vertical. 11% growth, 40% cost reduction.</p>
+                            <div class="card-tags">
+                                <span>$2.5B Platform</span>
+                                <span>P&L Owner</span>
+                                <span>40% Savings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Journey Content Panels -->
-            <div class="journey-content">
-                <div class="journey-panel active" data-panel="1">
-                    <div class="journey-header">
+            <!-- Mobile Journey (fallback for small screens) -->
+            <div class="journey-mobile">
+                <div class="mobile-milestone" data-milestone="1">
+                    <div class="mobile-marker"><i class="fas fa-heartbeat"></i></div>
+                    <div class="mobile-content">
+                        <span class="mobile-years">Foundation</span>
                         <h3>Healthcare R&D</h3>
-                        <span class="journey-period">Foundation Years</span>
-                    </div>
-                    <div class="journey-body">
-                        <div class="journey-role">
-                            <h4>R&D Engineer</h4>
-                            <p class="journey-company">Rancho Los Amigos Spinal Rehabilitation Center</p>
-                        </div>
-                        <p class="journey-description">Built the foundation in healthcare innovation, working on medical devices and rehabilitation technology that directly impacted patient outcomes.</p>
-                        <div class="journey-highlights">
-                            <span class="highlight-tag">Medical Devices</span>
-                            <span class="highlight-tag">Patient Care</span>
-                            <span class="highlight-tag">Research</span>
-                        </div>
+                        <p>R&D Engineer at Rancho Los Amigos</p>
                     </div>
                 </div>
-
-                <div class="journey-panel" data-panel="2">
-                    <div class="journey-header">
-                        <h3>E-Commerce & Retail</h3>
-                        <span class="journey-period">2014 - 2019</span>
-                    </div>
-                    <div class="journey-body">
-                        <div class="journey-role">
-                            <h4>Operations → Senior Manager, Program Management</h4>
-                            <p class="journey-company">Amazon.com | Bay Area & Seattle</p>
-                        </div>
-                        <p class="journey-description">Scaled from Operations Manager to Senior Manager in record time. Led global programs across North America, EU, and India, driving $485M in savings through automation.</p>
-                        <div class="journey-highlights">
-                            <span class="highlight-tag">$485M Savings</span>
-                            <span class="highlight-tag">Global Programs</span>
-                            <span class="highlight-tag">34 Fulfillment Centers</span>
-                        </div>
+                <div class="mobile-milestone" data-milestone="2">
+                    <div class="mobile-marker"><i class="fas fa-boxes"></i></div>
+                    <div class="mobile-content">
+                        <span class="mobile-years">2014 - 2019</span>
+                        <h3>E-Commerce</h3>
+                        <p>Amazon.com — $485M in savings</p>
                     </div>
                 </div>
-
-                <div class="journey-panel" data-panel="3">
-                    <div class="journey-header">
+                <div class="mobile-milestone" data-milestone="3">
+                    <div class="mobile-marker"><i class="fas fa-pills"></i></div>
+                    <div class="mobile-content">
+                        <span class="mobile-years">2019 - 2023</span>
                         <h3>Digital Pharmacy</h3>
-                        <span class="journey-period">2019 - 2023</span>
-                    </div>
-                    <div class="journey-body">
-                        <div class="journey-role">
-                            <h4>Director, Supply Chain → Chief of Staff to VP</h4>
-                            <p class="journey-company">Amazon Pharmacy | Phoenix & Seattle</p>
-                        </div>
-                        <p class="journey-description">Pioneered pharmacy operations across 13 markets, achieving $238M in capital expense avoidance. Delivered 1-day prescription delivery to 60% of Prime customers.</p>
-                        <div class="journey-highlights">
-                            <span class="highlight-tag">$238M CapEx Avoided</span>
-                            <span class="highlight-tag">13 Markets</span>
-                            <span class="highlight-tag">45% Delivery Boost</span>
-                        </div>
+                        <p>Amazon Pharmacy — $238M CapEx avoided</p>
                     </div>
                 </div>
-
-                <div class="journey-panel" data-panel="4">
-                    <div class="journey-header">
-                        <h3>Healthcare Tech Leadership</h3>
-                        <span class="journey-period">2023 - Present</span>
-                    </div>
-                    <div class="journey-body">
-                        <div class="journey-role">
-                            <h4>Senior Director, Product Management & BizOps</h4>
-                            <p class="journey-company">Alto Pharmacy | Seattle</p>
-                        </div>
-                        <p class="journey-description">Leading product strategy for a $2.5B pharmacy platform. Own P&L for $250M vertical, driving 11% growth and operational turnaround with 40% cost reduction.</p>
-                        <div class="journey-highlights">
-                            <span class="highlight-tag">$2.5B Platform</span>
-                            <span class="highlight-tag">P&L Ownership</span>
-                            <span class="highlight-tag">40% Cost Reduction</span>
-                        </div>
+                <div class="mobile-milestone active" data-milestone="4">
+                    <div class="mobile-marker"><i class="fas fa-laptop-medical"></i><span class="now-dot"></span></div>
+                    <div class="mobile-content">
+                        <span class="mobile-years">2023 - Present</span>
+                        <h3>Healthcare Tech</h3>
+                        <p>Alto Pharmacy — $2.5B platform leadership</p>
                     </div>
                 </div>
             </div>

@@ -568,222 +568,339 @@ a:hover {
 }
 
 /* ===================================
-   Experience Section - Interactive Journey
+   Experience Section - Interactive Journey Map
    =================================== */
 .experience {
     background: var(--color-bg-gray);
+    overflow: hidden;
 }
 
-/* Journey Navigation */
-.journey-nav {
+/* Journey Map Container */
+.journey-map {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: var(--spacing-lg) 0;
+}
+
+/* SVG Path */
+.journey-path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.path-bg {
+    fill: none;
+    stroke: var(--color-border);
+    stroke-width: 3;
+    stroke-dasharray: 8 4;
+}
+
+.path-progress {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 3;
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+    animation: drawPath 2s ease-out forwards;
+}
+
+@keyframes drawPath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Milestone Markers */
+.milestone {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.milestone-marker {
+    position: relative;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0;
-    margin-bottom: var(--spacing-lg);
-    flex-wrap: wrap;
 }
 
-.journey-point {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--spacing-md);
-    background: var(--color-bg-white);
-    border: 2px solid var(--color-border);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    min-width: 140px;
-}
-
-.journey-point:hover {
-    border-color: var(--color-primary-light);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-}
-
-.journey-point.active {
-    border-color: var(--color-primary);
-    background: var(--color-bg-white);
-    box-shadow: var(--shadow-lg);
-}
-
-.journey-point.active .journey-icon {
-    background: var(--color-primary);
-    color: white;
-}
-
-.journey-icon {
+.marker-icon {
     width: 50px;
     height: 50px;
+    background: var(--color-bg-white);
+    border: 3px solid var(--color-border);
     border-radius: 50%;
-    background: var(--color-bg-gray);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--spacing-xs);
-    transition: all var(--transition-normal);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
 }
 
-.journey-icon i {
+.marker-icon i {
     font-size: 1.25rem;
     color: var(--color-primary);
+    transition: all 0.3s ease;
 }
 
-.journey-point.active .journey-icon i {
+.marker-pulse {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.milestone:hover .marker-icon,
+.milestone.active .marker-icon {
+    transform: scale(1.15);
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    box-shadow: 0 8px 25px rgba(122, 74, 58, 0.3);
+}
+
+.milestone:hover .marker-icon i,
+.milestone.active .marker-icon i {
     color: white;
 }
 
-.journey-label {
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    text-align: center;
+.milestone:hover .marker-pulse,
+.milestone.active .marker-pulse {
+    animation: pulse 1.5s ease-out infinite;
 }
 
-.journey-years {
-    font-size: 0.75rem;
-    color: var(--color-text-light);
-    margin-top: 0.25rem;
-}
-
-.journey-connector {
-    width: 40px;
-    height: 2px;
-    background: var(--color-border);
-    flex-shrink: 0;
-}
-
-/* Journey Content Panels */
-.journey-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.journey-panel {
-    display: none;
-    background: var(--color-bg-white);
-    border-radius: 16px;
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-md);
-    animation: fadeInUp 0.4s ease;
-}
-
-.journey-panel.active {
-    display: block;
-}
-
-@keyframes fadeInUp {
-    from {
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(2);
         opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
-.journey-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-md);
+.current-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Milestone Cards */
+.milestone-card {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 280px;
+    background: var(--color-bg-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-md);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 20;
+}
+
+.milestone:hover .milestone-card,
+.milestone.expanded .milestone-card {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.card-header {
+    margin-bottom: var(--spacing-sm);
+}
+
+.card-years {
+    font-size: 0.7rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    margin: 0.25rem 0 0 0;
+    color: var(--color-text-primary);
+}
+
+.card-preview {
     padding-bottom: var(--spacing-sm);
     border-bottom: 1px solid var(--color-border);
 }
 
-.journey-header h3 {
+.card-preview p {
     margin: 0;
-    color: var(--color-primary);
-}
-
-.journey-period {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
     font-weight: 500;
 }
 
-.journey-role {
-    margin-bottom: var(--spacing-md);
+.card-details {
+    padding-top: var(--spacing-sm);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
 }
 
-.journey-role h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
-    color: var(--color-text-primary);
+.milestone.expanded .card-details {
+    max-height: 300px;
 }
 
-.journey-company {
+.card-company {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+.card-description {
+    font-size: 0.85rem;
     color: var(--color-text-secondary);
-    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.card-tags span {
+    background: var(--color-bg-gray);
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+}
+
+/* Mobile Journey */
+.journey-mobile {
+    display: none;
+    position: relative;
+    padding-left: 30px;
+}
+
+.journey-mobile::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-light));
+}
+
+.mobile-milestone {
+    position: relative;
+    padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-md);
+    cursor: pointer;
+}
+
+.mobile-marker {
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background: var(--color-bg-white);
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.mobile-marker i {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.mobile-milestone.active .mobile-marker,
+.mobile-milestone:hover .mobile-marker {
+    background: var(--color-primary);
+}
+
+.mobile-milestone.active .mobile-marker i,
+.mobile-milestone:hover .mobile-marker i {
+    color: white;
+}
+
+.now-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.mobile-content {
+    background: var(--color-bg-white);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.mobile-milestone:hover .mobile-content {
+    box-shadow: var(--shadow-md);
+    transform: translateX(5px);
+}
+
+.mobile-years {
+    font-size: 0.7rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mobile-content h3 {
+    font-size: 1rem;
+    margin: 0.25rem 0;
+}
+
+.mobile-content p {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
     margin: 0;
 }
 
-.journey-description {
-    color: var(--color-text-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-md);
-}
-
-.journey-highlights {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-xs);
-}
-
-.highlight-tag {
-    background: var(--color-bg-gray);
-    color: var(--color-primary);
-    padding: 0.35rem 0.85rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-/* Responsive Journey */
+/* Responsive */
 @media (max-width: 900px) {
-    .journey-nav {
-        gap: var(--spacing-sm);
-    }
-
-    .journey-connector {
+    .journey-map {
         display: none;
     }
 
-    .journey-point {
-        min-width: 120px;
-        padding: var(--spacing-sm);
-    }
-}
-
-@media (max-width: 600px) {
-    .journey-nav {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-    }
-
-    .journey-point {
-        width: 100%;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: var(--spacing-sm);
-    }
-
-    .journey-icon {
-        margin-bottom: 0;
-    }
-
-    .journey-label {
-        text-align: left;
-    }
-
-    .journey-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-xs);
+    .journey-mobile {
+        display: block;
     }
 }
 

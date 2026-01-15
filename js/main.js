@@ -8,27 +8,37 @@ if (bannerImage) {
 }
 
 // ===================================
-// Interactive Journey Navigation
+// Interactive Journey Map
 // ===================================
 document.addEventListener('DOMContentLoaded', () => {
-    const journeyPoints = document.querySelectorAll('.journey-point');
-    const journeyPanels = document.querySelectorAll('.journey-panel');
+    const milestones = document.querySelectorAll('.milestone');
 
-    journeyPoints.forEach(point => {
-        point.addEventListener('click', () => {
-            const journeyId = point.getAttribute('data-journey');
+    milestones.forEach(milestone => {
+        milestone.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isExpanded = milestone.classList.contains('expanded');
 
-            // Update active states on buttons
-            journeyPoints.forEach(p => p.classList.remove('active'));
-            point.classList.add('active');
+            // Close all other milestones
+            milestones.forEach(m => m.classList.remove('expanded'));
 
-            // Update active panel
-            journeyPanels.forEach(panel => {
-                panel.classList.remove('active');
-                if (panel.getAttribute('data-panel') === journeyId) {
-                    panel.classList.add('active');
-                }
-            });
+            // Toggle current milestone
+            if (!isExpanded) {
+                milestone.classList.add('expanded');
+            }
+        });
+    });
+
+    // Close expanded cards when clicking outside
+    document.addEventListener('click', () => {
+        milestones.forEach(m => m.classList.remove('expanded'));
+    });
+
+    // Mobile milestone interactions
+    const mobileMilestones = document.querySelectorAll('.mobile-milestone');
+    mobileMilestones.forEach(milestone => {
+        milestone.addEventListener('click', () => {
+            mobileMilestones.forEach(m => m.classList.remove('active'));
+            milestone.classList.add('active');
         });
     });
 });

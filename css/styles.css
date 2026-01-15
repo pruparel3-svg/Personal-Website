@@ -610,61 +610,50 @@ a:hover {
 
 .milestone-marker {
     position: relative;
-    width: 40px;
-    height: 55px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-}
-
-/* Location Pin Marker */
-.marker-pin {
-    width: 36px;
-    height: 48px;
-    background: var(--color-primary);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    position: relative;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(122, 74, 58, 0.4);
+}
+
+/* Icon Marker */
+.marker-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--color-bg-white);
+    border: 3px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(122, 74, 58, 0.3);
     transition: all 0.3s ease;
 }
 
-.marker-pin::before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    width: 14px;
-    height: 14px;
-    background: var(--color-bg-white);
-    border-radius: 50%;
+.marker-icon i {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    transition: all 0.3s ease;
 }
 
-.marker-pin::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 14px solid var(--color-primary);
+.milestone:hover .marker-icon {
+    transform: scale(1.15);
+    background: var(--color-primary);
+    box-shadow: 0 8px 20px rgba(122, 74, 58, 0.4);
 }
 
-.milestone:hover .marker-pin {
-    transform: scale(1.15) translateY(-3px);
-    box-shadow: 0 8px 20px rgba(122, 74, 58, 0.5);
+.milestone:hover .marker-icon i {
+    color: var(--color-bg-white);
 }
 
-.milestone.active .marker-pin {
-    background: var(--color-primary-dark);
+.milestone.active .marker-icon {
+    background: var(--color-primary);
+    border-color: var(--color-primary-dark);
 }
 
-.milestone.active .marker-pin::after {
-    border-top-color: var(--color-primary-dark);
+.milestone.active .marker-icon i {
+    color: var(--color-bg-white);
 }
 
 .current-badge {

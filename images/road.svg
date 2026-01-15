@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300">
-  <!-- Road surface -->
-  <path d="M0,250 Q100,250 180,220 Q280,180 380,140 Q500,90 620,70 Q740,50 850,80 Q950,110 1000,140"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" width="1000" height="350">
+  <!-- Road surface - more curvy like the reference image -->
+  <path d="M-10,320 C80,320 120,280 180,240 C240,200 280,160 360,140 C440,120 500,100 580,80 C660,60 720,50 780,70 C840,90 900,130 1010,160"
         fill="none"
         stroke="#2d2a26"
-        stroke-width="45"
+        stroke-width="50"
         stroke-linecap="round"
         stroke-linejoin="round"/>
   <!-- White dashed center line -->
-  <path d="M0,250 Q100,250 180,220 Q280,180 380,140 Q500,90 620,70 Q740,50 850,80 Q950,110 1000,140"
+  <path d="M-10,320 C80,320 120,280 180,240 C240,200 280,160 360,140 C440,120 500,100 580,80 C660,60 720,50 780,70 C840,90 900,130 1010,160"
         fill="none"
         stroke="#ffffff"
         stroke-width="4"
